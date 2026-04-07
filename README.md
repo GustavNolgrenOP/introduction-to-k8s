@@ -33,6 +33,7 @@ Se till att du har följande installerat innan sessionen:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [ansible](https://docs.ansible.com/projects/ansible/latest/installation_guide/installation_distros.html)
 - [vagrant](https://winstall.app/apps/Hashicorp.Vagrant)
+- [ansible](https://docs.ansible.com/projects/ansible/latest/installation_guide/installation_distros.html)
 
 ---
 
