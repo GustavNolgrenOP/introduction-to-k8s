@@ -1,0 +1,16 @@
+# RKE2 cluster configuration
+rke2_token: "my-shared-secret"
+rke2_master_ip: "192.168.100.10"
+rke2_version: "stable"
+
+# Node IPs
+nodes:
+  k8s-master:
+    ip: "192.168.100.10"
+    hostname: "k8s-master"
+  k8s-worker1:
+    ip: "192.168.100.11"
+    hostname: "k8s-worker1"
+  k8s-worker2:
+    ip: "192.168.100.12"
+    hostname: "k8s-worker2"

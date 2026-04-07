@@ -1,0 +1,14 @@
+---
+# site.yml
+# Runs the full cluster setup in order.
+# You can also run each playbook individually.
+#
+# Usage:
+#   Full setup:         ansible-playbook -i inventory.ini site.yml
+#   Single playbook:    ansible-playbook -i inventory.ini 02-system-prep.yml
+
+- import_playbook: 01-system-prep.yml
+- import_playbook: 02-rke2-master.yml
+- import_playbook: 03-rke2-workers.yml
+- import_playbook: 04-fetch-kubeconfig.yml
+- import_playbook: 05-configure-selinux.yml

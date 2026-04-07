@@ -1,0 +1,56 @@
+---
+# 01-system-prep.yml
+# Prepares all nodes for Kubernetes:
+# - Disables swap
+# - Loads required kernel modules
+# - Sets sysctl networking parameters
+
+- name: Prepare all nodes for Kubernetes
+  hosts: master,workers
+  become: true
+
+  tasks:
+    - name: Disable swap immediately
+      command: swapoff -a
+      changed_when: false
+
+    - name: Disable swap permanently in /etc/fstab
+      replace:
+        path: /etc/fstab
+        regexp: '^([^#].*\sswap\s.*)$'
+        replace: '# \1'
+
+    - name: Load overlay kernel module
+      modprobe:
+        name: overlay
+        state: present
+
+    - name: Load br_netfilter kernel module
+      modprobe:
+        name: br_netfilter
+        state: present
+
+    - name: Persist kernel modules across reboots
+      copy:
+        dest: /etc/modules-load.d/k8s.conf
+        content: |
+          overlay
+          br_netfilter
+
+    - name: Set required sysctl parameters
+      copy:
+        dest: /etc/sysctl.d/k8s.conf
+        content: |
+          net.bridge.bridge-nf-call-iptables  = 1
+          net.bridge.bridge-nf-call-ip6tables = 1
+          net.ipv4.ip_forward                 = 1
+
+    - name: Apply sysctl parameters
+      command: sysctl --system
+      changed_when: true
+
+    - name: Verify swap is off
+      command: swapon --show
+      register: swap_status
+      changed_when: false
+      failed_when: swap_status.stdout != ""
