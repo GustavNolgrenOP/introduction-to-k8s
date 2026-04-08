@@ -8,11 +8,11 @@ RKE2 levereras med **ingress-nginx** förinstallerat, så du behöver inte insta
 
 ## Begrepp
 
-| Resurs                 | Vad det är                                                                |
-| ---------------------- | ------------------------------------------------------------------------- |
-| **Ingress-kontroller** | En pod som lyssnar på port 80/443 och agerar reverse proxy                |
-| **Ingress**            | En Kubernetes-resurs som definierar routing-regler (host, path → Service) |
-| **Service**            | Exponerar en grupp pods under ett stabilt DNS-namn inuti klustret         |
+| Resurs                 | Vad det är                                                                 |
+| ---------------------- | -------------------------------------------------------------------------- |
+| **Ingress-kontroller** | En pod som lyssnar på port 80/443 och agerar reverse proxy                 |
+| **Ingress**            | En Kubernetes-resurs som definierar routing-regler (host, path -> Service) |
+| **Service**            | Exponerar en grupp pods under ett stabilt DNS-namn inuti klustret          |
 
 Trafikflödet ser ut så här:
 
@@ -55,11 +55,11 @@ kubectl get service echo-server
 kubectl get ingress main-ingress
 ```
 
-Under `ADDRESS` på Ingress ska du se en av nodernas IP:er (kan ta någon sekund).
+Under `ADDRESS` på Ingress ska du se våra noders IP-adresser (kan ta någon sekund).
 
 ---
 
-## Steg 4 – Testa routing
+## Steg 3 – Testa routing
 
 Eftersom `demo.k8s.local` inte finns i DNS behöver vi hjälpa curl att lösa upp det:
 
@@ -67,7 +67,7 @@ Eftersom `demo.k8s.local` inte finns i DNS behöver vi hjälpa curl att lösa up
 curl --resolve demo.k8s.local:80:192.168.100.11 http://demo.k8s.local
 ```
 
-Du ska få tillbaka ett JSON-svar med information om din request — host, headers, sökväg m.m. Det bekräftar att trafiken faktiskt routas hela vägen genom Ingress → Service → Pod.
+Du ska få tillbaka ett JSON-svar med information om din request — host, headers, sökväg m.m. Det bekräftar att trafiken faktiskt routas hela vägen genom Ingress -> Service -> Pod.
 
 Vill du slippa `--resolve` kan du lägga till en rad i `/etc/hosts`:
 
@@ -81,9 +81,38 @@ Och sedan köra:
 curl http://demo.k8s.local
 ```
 
+Alternativt kan du också ta bort biten om host:
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: main-ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+```
+
+Då kommer alla våra anrop till exv. 192.168.100.10 gå till echo-server:
+
+```bash
+curl 192.168.100.10
+{"host":{"hostname":"192.168.100.10","ip":...}
+```
+
 ---
 
-## Steg 5 – Utforska
+## Steg 4 – Utforska
 
 Testa gärna att:
 
