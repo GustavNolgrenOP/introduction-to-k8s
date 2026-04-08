@@ -13,6 +13,22 @@ Viktiga punkter:
 
 Kort sagt: RKE2 är en mer säker och färdigpaketerad version av Kubernetes för seriösa produktionsmiljöer och nu ska du få möjligheten att installera det på dina VM:ar!
 
+## Begrepp
+
+| Begrepp        | Vad det är                                                                                    |
+| -------------- | --------------------------------------------------------------------------------------------- |
+| **RKE2**       | Rancher Kubernetes Engine 2 — en säkerhetsfokuserad Kubernetes-distribution från SUSE/Rancher |
+| **Master-nod** | Noden som kör kontrollplanet (API-server, etcd, scheduler) och styr klustret                  |
+| **Worker-nod** | Nod som kör applikationernas pods under masternodens styrning                                 |
+| **etcd**       | Distribuerad nyckel-värde-databas som lagrar hela klustrets tillstånd                         |
+| **containerd** | Container-runtime som RKE2 använder för att köra containers (istället för Docker)             |
+| **kubeconfig** | Konfigurationsfil som talar om för `kubectl` hur det ska ansluta till klustret                |
+| **kubectl**    | Kommandoradsverktyg för att interagera med ett Kubernetes-kluster                             |
+| **Ansible**    | Automatiseringsverktyg som kör uppgifter på fjärrmaskiner via SSH utan att kräva agent        |
+| **SELinux**    | Säkerhetsmodul i Linux-kärnan som begränsar vad processer och containers får göra             |
+
+---
+
 Likt det förra steget finns också ett automatiserat sätt att installera och skapa klustret. Detta görs med `ansible`, vilket är ett automatiseringsverktyg som låter oss skapa vårt RKE2 cluster snabbt. Om tiden är knapp och du vill få allting på plats, kör detta i WSL:
 
 ```bash
