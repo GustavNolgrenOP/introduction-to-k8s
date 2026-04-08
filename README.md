@@ -15,13 +15,13 @@ Kursen täcker Kubernetes grundläggande koncept och ger deltagarna praktisk erf
 
 ## Innehåll
 
-| #   | Modulbranch                              | Ämne                            |
-| --- | ---------------------------------------- | ------------------------------- |
-| 0   | [00-setup](workshop/00-setup/)           | Verktyg & klusteruppsättning    |
-| 1   | [01-rke2](workshop/01-rke2/)             | Pods, Deployments & Services    |
-| 2   | [02-ingress](workshop/02-ingress/)       | Ingress-kontroller & routing    |
-| 3   | [03-config](workshop/03-config/)         | ConfigMaps & Secrets            |
-| 4   | [04-resilience](workshop/04-resilience/) | Resursgränser & driftsättningar |
+| #   | Modulbranch                                | Ämne                            |
+| --- | ------------------------------------------ | ------------------------------- |
+| 0   | [00-setup](./00-setup/README.md)           | Verktyg & klusteruppsättning    |
+| 1   | [01-rke2](./01-rke2/README.md)             | Pods, Deployments & Services    |
+| 2   | [02-ingress](./02-ingress/README.md)       | Ingress-kontroller & routing    |
+| 3   | [03-config](./03-config/README.md)         | ConfigMaps & Secrets            |
+| 4   | [04-resilience](./04-resilience/README.md) | Resursgränser & driftsättningar |
 
 ---
 
