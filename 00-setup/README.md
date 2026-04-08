@@ -2,6 +2,19 @@
 
 Detta steg kan göras antingen "för hand" eller genom att köra `Vagrantfile` som kommer skapa våra tre VM:ar automatiskt med Almalinux 9 installerat. FÖr att göra det, se till att du har `vagrant` installerat i din Windows PowerShell.
 
+## Begrepp
+
+| Begrepp             | Vad det är                                                                                                 |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Vagrant**         | Verktyg för att automatisera skapandet och konfigurationen av virtuella maskiner                           |
+| **WSL**             | Windows Subsystem for Linux — kör en Linux-miljö direkt i Windows                                          |
+| **Hyper-V**         | Microsofts inbyggda hypervisor i Windows för att köra virtuella maskiner                                   |
+| **Virtuell switch** | En mjukvarubaserad nätverksswitch som låter virtuella maskiner kommunicera med varandra och med värddatorn |
+| **NAT**             | Network Address Translation — delar en IP-adress mellan flera maskiner för internet-åtkomst                |
+| **SSH**             | Secure Shell — krypterat protokoll för att fjärrstyra maskiner via terminal                                |
+
+---
+
 ## Virtuell Switch
 
 Innan du skapar upp VM:arna måste vi skapa ett sätt för dem att kommunicera med varandra. Vi kommer därför skapa en virtuell switch, kör dessa kommandom i en PowerShell-terminal som administrator:
