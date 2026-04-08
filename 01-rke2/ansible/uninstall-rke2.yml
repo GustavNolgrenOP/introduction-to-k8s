@@ -1,0 +1,34 @@
+---
+# Uninstalls RKE2 across VMs
+
+- name: Uninstall RKE2
+  hosts: workers,master
+  become: true
+  serial: 1
+
+  tasks:
+    - name: Stop rke2-server
+      systemd:
+        name: rke2-server
+        state: stopped
+      ignore_errors: true
+
+    - name: Run RKE2 uninstall script
+      shell: rke2-uninstall.sh
+      ignore_errors: true
+
+    - name: Remove leftover systemd unit files
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /usr/lib/systemd/system/rke2-server.service
+        - /usr/lib/systemd/system/rke2-agent.service
+        - /usr/local/bin/rke2
+        - /usr/local/bin/rke2-uninstall.sh
+        - /etc/rancher/rke2
+        - /var/lib/rancher/rke2
+
+    - name: Reload systemd daemon
+      systemd:
+        daemon_reload: true

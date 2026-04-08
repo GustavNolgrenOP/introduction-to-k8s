@@ -1,0 +1,26 @@
+- name: Configure SELinux for local-path-provisioner
+  hosts: master, workers
+  become: true
+  tasks:
+    - name: Install policycoreutils for semanage
+      ansible.builtin.package:
+        name: policycoreutils-python-utils
+        state: present
+
+    - name: Create local-path-provisioner directory
+      ansible.builtin.file:
+        path: /opt/local-path-provisioner
+        state: directory
+        mode: "0777"
+
+    - name: Set SELinux file context for local-path-provisioner
+      community.general.sefcontext:
+        target: "/opt/local-path-provisioner(/.*)?"
+        setype: container_file_t
+        state: present
+
+    - name: Apply SELinux file context
+      ansible.builtin.command:
+        cmd: restorecon -Rv /opt/local-path-provisioner
+      register: restorecon_result
+      changed_when: restorecon_result.stdout != ""

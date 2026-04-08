@@ -1,0 +1,78 @@
+---
+# 03-rke2-workers.yml
+# Joins worker nodes to the cluster as control-plane + etcd members
+# Only run this AFTER 03-rke2-master.yml has completed successfully
+
+- name: Join worker nodes as control-plane members
+  hosts: workers
+  become: true
+  serial: 1 # Join one node at a time to avoid etcd quorum issues
+
+  tasks:
+    - name: Create RKE2 config directory
+      file:
+        path: /etc/rancher/rke2
+        state: directory
+        mode: "0755"
+
+    - name: Configure insecure registry for RKE2
+      copy:
+        dest: /etc/rancher/rke2/registries.yaml
+        content: |
+          mirrors:
+            "192.168.100.10:32000":
+              endpoint:
+                - "http://192.168.100.10:32000"
+        mode: "0644"
+
+    - name: Write RKE2 server config
+      copy:
+        dest: /etc/rancher/rke2/config.yaml
+        content: |
+          server: https://{{ rke2_master_ip }}:9345
+          token: {{ rke2_token }}
+
+    - name: Download and install RKE2
+      shell: curl -sfL https://get.rke2.io | sh -
+      args:
+        creates: /usr/local/bin/rke2
+
+    - name: Enable and start RKE2 server
+      systemd:
+        name: rke2-server
+        enabled: true
+        state: started
+
+    - name: Wait for node to join the cluster
+      shell: >
+        /var/lib/rancher/rke2/bin/kubectl
+        --kubeconfig /etc/rancher/rke2/rke2.yaml
+        get node {{ inventory_hostname }}
+        --no-headers
+      register: node_status
+      until: "'Ready' in node_status.stdout"
+      retries: 30
+      delay: 15
+      changed_when: false
+      delegate_to: "{{ groups['master'][0] }}"
+
+    - name: Show node status
+      debug:
+        msg: "{{ node_status.stdout }}"
+
+- name: Verify full cluster status
+  hosts: master
+  become: true
+
+  tasks:
+    - name: Get all nodes
+      shell: >
+        /var/lib/rancher/rke2/bin/kubectl
+        --kubeconfig /etc/rancher/rke2/rke2.yaml
+        get nodes
+      register: cluster_nodes
+      changed_when: false
+
+    - name: Show cluster status
+      debug:
+        msg: "{{ cluster_nodes.stdout_lines }}"
