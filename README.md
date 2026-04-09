@@ -6,19 +6,19 @@ En praktisk introduktionskurs i Kubernetes med Rancher Kubernetes Enginge (RKE2)
 
 ## Översikt
 
-Kursen täcker Kubernetes grundläggande koncept och ger deltagarna praktisk erfarenhet av att driftsätta och hantera workloads i ett kluster.
+Kursen täcker Kubernetes grundläggande koncept och ger deltagarna praktisk erfarenhet av att driftsätta och hantera workloads i ett kluster. Kursen kommer vara utformad från att du använder Windows med WSL (Windows Subsystem for Linux). Det leder till lite fler extra steg än om du kör native linux då vi skapar upp VM:arna, men det
 
 ---
 
 ## Innehåll
 
-| #   | Modulbranch                                | Ämne                                                |
-| --- | ------------------------------------------ | --------------------------------------------------- |
-| 0   | [00-setup](./00-setup/README.md)           | Verktyg, förberedande arbete                        |
-| 1   | [01-rke2](./01-rke2/README.md)             | Uppstart av RKE2 och skapande av kluster            |
-| 2   | [02-ingress](./02-ingress/README.md)       | Ingress-kontroller, routing, Deployment och Service |
-| 3   | [03-config](./03-config/README.md)         | ConfigMaps & Secrets                                |
-| 4   | [04-resilience](./04-resilience/README.md) | Resursgränser & driftsättningar                     |
+| #   | Modulbranch                          | Ämne                                                |
+| --- | ------------------------------------ | --------------------------------------------------- |
+| 0   | [00-setup](./00-setup/README.md)     | Verktyg, förberedande arbete                        |
+| 1   | [01-rke2](./01-rke2/README.md)       | Uppstart av RKE2 och skapande av kluster            |
+| 2   | [02-ingress](./02-ingress/README.md) | Ingress-kontroller, routing, Deployment och Service |
+| 3   | [03-images](./03-images/README.md)   | ConfigMaps & Secrets                                |
+| 4   | [04-secrets](./04-secrets/README.md) | Resursgränser & driftsättningar                     |
 
 ---
 
@@ -26,10 +26,10 @@ Kursen täcker Kubernetes grundläggande koncept och ger deltagarna praktisk erf
 
 Se till att du har följande installerat innan sessionen:
 
-- [Docker](https://docs.docker.com/get-docker/)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [ansible](https://docs.ansible.com/projects/ansible/latest/installation_guide/installation_distros.html)
-- [vagrant](https://winstall.app/apps/Hashicorp.Vagrant)
+- [Docker (WSL)](https://docs.docker.com/get-docker/)
+- [kubectl (WSL)](https://kubernetes.io/docs/tasks/tools/)
+- [ansible (WSL)](https://docs.ansible.com/projects/ansible/latest/installation_guide/installation_distros.html)
+- [vagrant (Windows)](https://winstall.app/apps/Hashicorp.Vagrant)
 
 ---
 
