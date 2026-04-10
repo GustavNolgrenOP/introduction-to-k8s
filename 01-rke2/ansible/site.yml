@@ -11,4 +11,3 @@
 - import_playbook: 02-rke2-master.yml
 - import_playbook: 03-rke2-workers.yml
 - import_playbook: 04-fetch-kubeconfig.yml
-- import_playbook: 05-configure-selinux.yml

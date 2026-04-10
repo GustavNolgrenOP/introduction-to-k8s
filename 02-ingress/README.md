@@ -17,7 +17,7 @@ RKE2 levereras med **ingress-nginx** förinstallerat, så du behöver inte insta
 Trafikflödet ser ut så här:
 
 ```
-Klient -> Ingress-kontroller (nginx) -> Service -> Pod(s)
+Klient -> Ingress-kontroller (nginx) -> Service -> Pod
 ```
 
 ---

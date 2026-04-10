@@ -12,6 +12,12 @@ spec:
       labels:
         app: registry
     spec:
+      nodeSelector:
+        registry: "true"
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
       containers:
         - name: registry
           image: registry:2

@@ -36,7 +36,7 @@ New-NetNat -Name "k8s-nat" -InternalIPInterfaceAddressPrefix 192.168.100.0/24
 
 Beroende på hur mycket minne din dator har kan du behöva skala ner på antalet noder (alltså maskiner). Jag har en dator med 32 GB minne och kan då köra tre VM:ar med 4 GB minne, men har du lägre kan du behöva skala ner till en eller två.
 
-Om du vill skapa VM:arna med vagrant kan du göra det nu. Se då till att köra `vagrant up` i en PowerShell-terminal som administrator. Detta kan ta några minuter, men när allt är färdigt kan du
+Om du vill skapa VM:arna med vagrant kan du göra det nu. Se då till att köra `vagrant up` i en PowerShell-terminal som administrator. Detta kan ta några minuter, men när allt är färdigt kan du hoppa över nästa steg för manuellt skapa dessa.
 
 ## Skapa VM:ar manuellt
 
@@ -44,7 +44,7 @@ Då denna del är lite mer tidskrävande än vagrant kommer du antagligen inte h
 
 ## Verifiera anslutning till maskinerna
 
-Eftersom kommande steg är utformade att köra från WSL måste du verifiera att VM:arna du skapade nu kan nås. Med lösenordet `vagrant`, kör följande för att tre VM:ar (10, 11, 12):
+Eftersom kommande steg är utformade att köra från WSL måste du verifiera att VM:arna du skapade nu kan nås. Med lösenordet `vagrant` (om du gjorde vagrant, annars ditt egna), kör följande för de tre VM:arna (10, 11, 12):
 
 ```bash
 ssh vagrant@192.168.100.1X

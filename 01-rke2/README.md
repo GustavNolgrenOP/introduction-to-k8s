@@ -248,11 +248,13 @@ export KUBECONFIG=~/.kube/configs/rke2-cluster.yaml
 kubectl get nodes
 ```
 
-Lägg gärna till `export KUBECONFIG`-raden i din `~/.bashrc` eller `~/.zshrc` så slipper du ange den varje gång.
+> **Tips:** Skapa ett alias för kubectl, vi kommer skriva det många gånger! Sätt `alias k = 'kubectl'` i din bashrc.
+
+Nu kan du egentligen gå till nästa mapp där vi äntligen ska lägga till lite saker på klustret vi precis skapade. Om du stöter på problem med SELinux kan nästa del vara relevant, men borde inte vara ett problem om du inte ska syssla något med local-storage i framtiden.
 
 ---
 
-## 05-configure-selinux.yml
+## 05-configure-selinux.yml (valfritt)
 
 Det här steget konfigurerar SELinux så att `local-path-provisioner` — RKE2:s inbyggda mekanism för dynamisk volymskapning — kan skriva till rätt katalog på noderna.
 
