@@ -6,7 +6,7 @@ En praktisk introduktionskurs i Kubernetes med Rancher Kubernetes Enginge (RKE2)
 
 ## Översikt
 
-Kursen täcker Kubernetes grundläggande koncept och ger deltagarna praktisk erfarenhet av att driftsätta och hantera workloads i ett kluster. Kursen kommer vara utformad från att du använder Windows med WSL (Windows Subsystem for Linux). Det leder till lite fler extra steg än om du kör native linux då vi skapar upp VM:arna, men det
+Kursen täcker Kubernetes grundläggande koncept och ger deltagarna praktisk erfarenhet av att driftsätta och hantera workloads i ett kluster. Kursen kommer vara utformad från att du använder Windows med WSL (Windows Subsystem for Linux). Det leder till lite fler extra steg än om du kör native linux när vi skapar upp VM:arna, men alla de stegen finns i detta repo under `00-setup` och dessutom en automatisering med vagrant man kan köra.
 
 ---
 
