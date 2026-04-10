@@ -26,7 +26,7 @@ Kursen täcker Kubernetes grundläggande koncept och ger deltagarna praktisk erf
 
 Se till att du har följande installerat innan sessionen:
 
-- [Docker (WSL)](https://docs.docker.com/get-docker/)
+- Docker eller Podman (WSL)
 - [kubectl (WSL)](https://kubernetes.io/docs/tasks/tools/)
 - [ansible (WSL)](https://docs.ansible.com/projects/ansible/latest/installation_guide/installation_distros.html)
 - [vagrant (Windows)](https://winstall.app/apps/Hashicorp.Vagrant)
