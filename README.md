@@ -12,13 +12,13 @@ Kursen täcker Kubernetes grundläggande koncept och ger deltagarna praktisk erf
 
 ## Innehåll
 
-| #   | Modulbranch                            | Ämne                                                |
-| --- | -------------------------------------- | --------------------------------------------------- |
-| 0   | [00-setup](./00-setup/README.md)       | Verktyg, förberedande arbete                        |
-| 1   | [01-rke2](./01-rke2/README.md)         | Uppstart av RKE2 och skapande av kluster            |
-| 2   | [02-ingress](./02-ingress/README.md)   | Ingress-kontroller, routing, Deployment och Service |
-| 3   | [03-images](./03-images/README.md)     | ConfigMaps & Secrets                                |
-| 4   | [04-your-app](./04-your-app/README.md) | Resursgränser & driftsättningar                     |
+| #   | Modulbranch                                                | Ämne                                                |
+| --- | ---------------------------------------------------------- | --------------------------------------------------- |
+| 0   | [00-setup](./00-setup/README.md)                           | Verktyg, förberedande arbete                        |
+| 1   | [01-rke2](./01-rke2/README.md)                             | Uppstart av RKE2 och skapande av kluster            |
+| 2   | [02-ingress](./02-ingress/README.md)                       | Ingress-kontroller, routing, Deployment och Service |
+| 3   | [03-images-and-secrets](./03-images-and-secrets/README.md) | Images & Secrets                                    |
+| 4   | [04-your-app](./04-your-app/README.md)                     | Resursgränser & driftsättningar                     |
 
 ---
 
